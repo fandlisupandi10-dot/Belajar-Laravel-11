@@ -11,6 +11,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        $middleware->alias([
+            'isMember' => App\Http\Middleware\CekMembership::class,
+            'isAuth' => App\Http\Middleware\isAuth::class,
+        ]);
         $middleware->validateCsrfTokens(except:[
             '*'
 
