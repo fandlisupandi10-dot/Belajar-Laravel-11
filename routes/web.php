@@ -3,7 +3,7 @@
 // use App\Http\Middleware\CekMembership;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use Iluminate\support\Facades\Response;
+use Illuminate\Support\Facades\Response;
 use App\Http\Controllers\MovieController;
 
 // Route::get('/', function () {
@@ -63,4 +63,34 @@ Route::get('/cache-control', function() {
         ->header('Cache-Control', 'public, max-age=86400');
 
     });
-        
+
+Route::middleware('cache.headers:public;max_age=2628000;etag')->group(function () {
+
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    Route::get('/dashboard', function() {
+
+        $user = "admin";
+
+        return response('login successful', 200)->cookie('user', $user);
+    
+    });
+
+    Route::get('/logout', function() {
+
+        return redirect()->action([HomeController::class, 'index']);
+    
+    });
+
+    Route::get('/privacy', function() {
+
+        return 'Privacy Policy';    
+    
+    });
+
+    Route::get('/terms', function() {
+
+        return 'Terms and Conditions';    
+    
+    });
+});
