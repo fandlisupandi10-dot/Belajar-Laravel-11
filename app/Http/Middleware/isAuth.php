@@ -16,7 +16,7 @@ class isAuth
     public function handle(Request $request, Closure $next): Response
     {
 
-        if(!$request->autentificated) {
+        if (!$request->auth) {
             return redirect('/login');
         }
         return $next($request);

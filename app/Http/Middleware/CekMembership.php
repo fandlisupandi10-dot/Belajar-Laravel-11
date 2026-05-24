@@ -17,7 +17,7 @@ class CekMembership
     public function handle(Request $request, Closure $next): Response
     {
 
-        if($request->membership == false) {
+        if (!$request->membership) {
             return redirect('/pricing');
         }
 
@@ -39,3 +39,4 @@ class CekMembership
         return $response;
     }
 }
+ 

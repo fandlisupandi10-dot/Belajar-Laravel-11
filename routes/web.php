@@ -2,82 +2,47 @@
 
 // use App\Http\Middleware\CekMembership;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MovieController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-  $movies = [];
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-    for($i = 1; $i <= 10; $i++) {
-        $movies[] = [
-            'title' => 'Movie'. $i,
-            'year' => '2020',
-            'genre' => 'Action',
-        ];
-    }
 
-Route::get('/movie', function() use ($movies) {
-  
-    return $movies;
+ $movies = [];
+
+ 
+
+Route::group(
     
+    [
+       
+        'prefix' => 'movie',
+        
+        'as' => 'movie.'
 
-});
+    ], function() {
 
-// middleware untuk mengecek apakah user memiliki membership atau tidak, jika tidak maka tidak bisa mengakses route ini
-Route::get('/movie/{id}', function($id) use ($movies) {
-  
-    return $movies[$id];
+    Route::get('/',[MovieController::class, 'index']);
+
+    Route::get('/{id}', [MovieController::class, 'show']);
+
+    Route::post('/', [MovieController::class, 'store']);
+
+    Route::put('/{id}', [MovieController::class, 'update']);
+
+    Route::delete('/{id}', [MovieController::class, 'destroy']);
+
     
+  });
 
-})->middleware(['isAuth','isMember']);
-
-Route::post('/movie', function() use ($movies) {
-  $movies[] = [
-    'title' => request('title'),
-
-    'year' => request('year'),
-    
-    'genre' => request('genre'),
-  ];
-
-      return $movies;
-
-});
-
-
-
-Route::put('/movie/{id}', function($id) use ($movies) {
-
-  $movies[$id]['title'] = request('title');
-  $movies[$id]['year'] = request('year');
-  $movies[$id]['genre'] = request('genre');
-
-      return $movies;
-
-});
-
-Route::patch('/movie/{id}', function($id) use ($movies) {
-
-  $movies[$id]['title'] = request('title');
-  $movies[$id]['year'] = request('year');
-  $movies[$id]['genre'] = request('genre');
-
-      return $movies;
-
-});
-
-Route::delete('/movie/{id}', function($id) use ($movies) {
-
-  unset($movies[$id]);
-
-      return $movies;
-
-});
-
-Route::get('/pricing', function() {
+Route::get('/pricing', function() 
+{
     return 'Please subscribe to our membership to access this page';
 });
 
-Route::get('/login', function() {
-    return 'Login Page';
-})->name('login');
+ Route::get('/login', function() 
+ {
+return 'Login Page';
+ })->name('login');
+
