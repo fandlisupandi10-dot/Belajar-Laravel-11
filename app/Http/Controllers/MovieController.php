@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-use App\Http\Middleware\Middleware;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
 
 
-class MovieController extends Controller
+class MovieController extends Controller implements HasMiddleware
 {
     public $movies;
 
@@ -29,7 +30,7 @@ class MovieController extends Controller
 
     }
 
-     public static function __middleware()
+     public static function middleware()
         {
             return [
                 'isAuth',
