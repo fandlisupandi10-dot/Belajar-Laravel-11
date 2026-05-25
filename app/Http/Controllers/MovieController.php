@@ -40,7 +40,10 @@ class MovieController extends Controller implements HasMiddleware
 
     public function index()
     {
-        return $this->movies;
+        return response()->json([
+            'movies' => $this->movies,
+            'message' => 'List of movies',
+        ], 200);
     }
 
     public function show($id)
@@ -66,7 +69,7 @@ class MovieController extends Controller implements HasMiddleware
         // $this->movies[$id]['year'] = request('year');
 
         // $this->movies[$id]['genre'] = request('genre');
-        
+
         // return $this->movies;
 
         return $request->all();

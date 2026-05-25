@@ -5,13 +5,18 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\HomeController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 
  $movies = [];
+
+ Route::get('/home', function (){
+    return view ('home');
+ });
 
  
 
@@ -66,7 +71,7 @@ Route::get('/cache-control', function() {
 
 Route::middleware('cache.headers:public;max_age=2628000;etag')->group(function () {
 
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    // Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     Route::get('/dashboard', function() {
 
@@ -78,7 +83,7 @@ Route::middleware('cache.headers:public;max_age=2628000;etag')->group(function (
 
     Route::get('/logout', function() {
 
-        return redirect()->action([HomeController::class, 'index']);
+        return redirect()->action([HomeController::class, 'index'], ['auth'=>false]);
     
     });
 
@@ -94,3 +99,10 @@ Route::middleware('cache.headers:public;max_age=2628000;etag')->group(function (
     
     });
 });
+
+
+// Route::get('/external', function() {
+
+//     return redirect('/home');
+
+// });
