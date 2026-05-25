@@ -15,7 +15,10 @@ Route::get('/', function () {
  $movies = [];
 
  Route::get('/home', function (){
-    return view ('home');
+
+   $movieCategory = 'Drama';
+
+    return view ('home', compact('movieCategory'));
  });
 
  
@@ -57,6 +60,8 @@ return 'Login Page';
 
 
 Route::get('/response', function() {
+
+
     return response('Ok')->header('Content-Type', 'text/plain');
    
     });
