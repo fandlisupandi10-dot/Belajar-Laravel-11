@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Views\Composer;
+namespace App\Views\Composers;
 
 
 class MenuComposer
@@ -14,7 +14,7 @@ class MenuComposer
                     'Contact' => '/contact',
                 ];
             
-            $auth = false;
+            $auth = true; // Simulate authentication status (replace with actual auth check)
             
             if($auth) {
                 $menu =  array_merge($menu, [

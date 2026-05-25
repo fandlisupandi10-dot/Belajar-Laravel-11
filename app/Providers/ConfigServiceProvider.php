@@ -20,22 +20,7 @@ class ConfigServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // $config = [
-        //     'title' => 'Home Page',
-        //     'year' => '2024',
-        //     'author' => 'John Doe',
-        //     'theme' => 'light',
-        // ];
 
-        View::composer(['*'], function($view) {
-            // Example shared data (uncomment and modify as needed)
-            // $menu = [
-            //     'Home' => '/',
-            //     'About' => '/about',
-            //     'Contact' => '/contact',
-            // ];
-            // view()->share('menu', $menu);
-        });
-        }
-
+ 
     }
+}
