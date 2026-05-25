@@ -106,8 +106,4 @@ Route::middleware('cache.headers:public;max_age=2628000;etag')->group(function (
 });
 
 
-// Route::get('/external', function() {
 
-//     return redirect('/home');
-
-// });
