@@ -12,9 +12,9 @@ $home = 'Ini adalah halaman home';
 </head> 
 <body>
     <ul>
-        <?php foreach($menu as $key => $value):?>
-            <li><a href="<?= $value ?>"><?= $key ?></a></li>
-        <?php endforeach;?>
+         @foreach($menu as $key => $value)
+            <li><a href="{{ $value }}">{{ $key }}</a></li>
+        @endforeach
     </ul>
     <h1>Home Page</h1>
     <p>{{ $home }}</p>

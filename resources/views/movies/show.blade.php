@@ -8,6 +8,11 @@
     <title>Home</title> 
 </head> 
 <body>
+    <ul>
+         @foreach($menu as $key => $value)
+            <li><a href="{{ $value }}">{{ $key }}</a></li>
+        @endforeach
+    </ul>
     <h1>{{$titlePage}}</h1>
     <p>{{dd($movie)}} </p>
 </body>
