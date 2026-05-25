@@ -1,3 +1,7 @@
+<?php 
+$home = 'Ini adalah halaman home';
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -7,7 +11,12 @@
     <title>Home</title> 
 </head> 
 <body>
+    <ul>
+        <?php foreach($menu as $key => $value):?>
+            <li><a href="<?= $value ?>"><?= $key ?></a></li>
+        <?php endforeach;?>
+    </ul>
     <h1>Home Page</h1>
-    <p>This is home page</p>
+    <p>{{ $home }}</p>
 </body>
 </html>

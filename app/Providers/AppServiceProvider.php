@@ -19,6 +19,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+    
+        View::share('menu', [
+            'Home' => '/',
+            'About' => '/about',
+            'Contact' => '/contact',
+
+        ]);
     }
 }

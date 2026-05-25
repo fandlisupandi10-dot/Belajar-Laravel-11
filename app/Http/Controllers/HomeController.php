@@ -8,6 +8,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return response(request()->auth);
+        
+        return response(request()->auth == true);
     }
 }
